@@ -162,3 +162,26 @@ body {
 .search {
     padding: 10px;
 }
+
+/* footer */
+.footer {
+    width: auto;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 5px;
+    background-color: #e7e6e6;
+    box-shadow: 0 0 10px rgba(216, 215, 215, 0.1);
+}
+
+.footer > strong {
+    padding-left: 5px;
+}
+
+.footer > span {
+    margin: 0px 5px;
+}
+
+.footer > strong > span {
+    color: rgb(195, 22, 22);
+}

@@ -458,11 +458,28 @@ const Body = () => {
     );
 };
 
+const Footer = () => {
+    const year = new Date().getFullYear();
+
+    return (
+        <div className="footer">
+            Created By ❤️ 
+            <a href="https://www.linkedin.com/in/harshikamalhotra01/" target="_blank" >
+                Harshika Malhotra
+            </a>
+            &copy;
+            {year}
+            <strong>Food<span>Cart</span></strong>
+        </div>
+    )
+}
+
 const AppLayout = () => {
     return (
         <div className="app">
             <Header />
             <Body />
+            <Footer />
         </div>
     )
 }
