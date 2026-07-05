@@ -10,7 +10,8 @@ const Header = () => {
     return (
         <div className="header">
             <div className="logo-container" >
-                <img src={foodCartLogo} alt="Food Cart Logo" style={{width: "100px"}} />
+                <img className="logo"
+                src={foodCartLogo} alt="Food Cart Logo" />
             </div>
 
             <div className="nav-items">
