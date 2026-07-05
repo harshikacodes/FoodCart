@@ -81,3 +81,36 @@ body {
     margin: 0px;
     border-radius: 8px 8px 0px 0px;
 }
+
+/* search box */
+
+.search-box {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid #c9c8c8;
+    padding: 0px 10px;
+    font-size: 1.2rem;
+}
+
+.search-box > input {
+    height: 40px;
+    padding: 0px 10px;
+    outline: none;
+    border: none;
+    background-color: #f1f1f1;
+    width: 90%;
+    font-size: 1.2rem;
+}
+
+.search-icon {
+    color: #828080;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.search {
+    padding: 10px;
+}
