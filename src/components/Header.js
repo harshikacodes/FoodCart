@@ -1,4 +1,5 @@
 import foodCartLogo from "../../public/images/foodCartLogo.png";
+import { FaCartArrowDown } from "react-icons/fa";
 
 const Header = () => {
     return (
@@ -13,7 +14,7 @@ const Header = () => {
                     <li>Home</li>
                     <li>ABout Us</li>
                     <li>Contact Us</li>
-                    <li>Cart</li>
+                    <li><FaCartArrowDown /></li>
                 </ul>
             </div>
         </div>
