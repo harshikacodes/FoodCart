@@ -1,0 +1,18 @@
+body {
+    background-color: #d4d1d1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#parent {
+    width: fit-content;
+    border: 1px solid red;
+    padding: 0 20px;
+}
+
+h1 {
+    color: purple;
+    font-size: 2rem;
+}
