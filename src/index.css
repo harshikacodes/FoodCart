@@ -55,6 +55,14 @@ body {
     color: orange;
 }
 
+.login {
+    border: none;
+    background-color: transparent;
+    color: #545454;
+    font-size: 16px;
+    font-weight: bold;
+}
+
 /* body */
 .body {
     width: 100%;
