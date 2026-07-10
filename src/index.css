@@ -169,6 +169,20 @@ body {
     font-size: 1.2rem;
 }
 
+.search-box > .search {
+    font-size: 1.2rem;
+    color: white;
+    background-color: orange;
+    cursor: pointer;
+    border-radius: 0px 10px 10px 0;
+    border: none;
+}
+
+.search-box > .search:hover {
+    background-color: tomato;
+    transition: 0.3s;
+}
+
 .shimmer-search-box {
     width: 50%;
     height: 50px;
