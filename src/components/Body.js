@@ -1,46 +1,67 @@
-import { CiSearch } from "react-icons/ci";
-import resList from "../utils/mockData";
 import RestaurantCard from "./RestaurantCard.js";
-import {useState} from "react";
+import {useState, useEffect} from "react";
+import Shimmer from "./Shimmer.js";
+
+import { SWIGGY_API_URL, SWIGGY_REST_API_PATH } from "../utils/constants.js";
 
 const Body = () => {
-    const [restaurantList, setRestaurantList] = useState(resList);
-    const [showButton, setShowButton] = useState(true);
+    const [restaurantList, setRestaurantList] = useState([]);
+    const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+    const [searchRestaurant, setSearchRestaurant] = useState("");
+    const [restaurantName, setRestaurantName] = useState("");
 
-    // func to update the restaurant list based on the rating
-    const filterRestaurantList = () => {
-        const filteredRestaurant = restaurantList.filter(
-            (res) => res.info.avgRating > 4.3
-        );
-        setRestaurantList(filteredRestaurant);
-        setShowButton(false);
+    const fetchData = async () => {
+        try {
+            const data = await fetch(SWIGGY_API_URL);
+            const json = await data.json();
+
+            console.log(json);
+
+            const restaurants = json?.data?.cards?.[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
+            console.log(restaurants);
+            console.log(Array.isArray(restaurants));
+
+            setRestaurantList(restaurants);
+            setFilteredRestaurants(restaurants);
+        } catch(error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, [])
+
+    const handleSearch = () => {
+        const filtered = restaurantList.filter((res) => res.info.name.toLowerCase().includes(searchRestaurant.toLowerCase()));
+        setFilteredRestaurants(filtered);
+        setRestaurantName(searchRestaurant);
+        setSearchRestaurant("");
     }
 
-    return (
+    return restaurantList.length === 0 ? (
+        <Shimmer />
+    ) : (
         <div className="body">
             <div className="search-box">
-                <input placeholder="search a restaurant" />
-                <CiSearch className="search-icon" />
-            </div>
-
-            <div className="filter">
-                {
-                    // if the showButton is true, then the filter button will be displayed.
-                    showButton && (
-                        <button className="filter-btn" onClick={filterRestaurantList}>
-                            Top Rated Restaurants
-                        </button>
-                    )
-                }
+                <input 
+                    type="text" value={searchRestaurant}
+                    onChange={(e) => setSearchRestaurant(e.target.value)}
+                    placeholder="search a restaurant..." />
+                <button className="search" onClick={handleSearch}>Search</button>
             </div>
 
             <div className="restaurant-container">
-                {restaurantList.map((restaurant) => (
-                    <RestaurantCard
-                        key={restaurant.info.id}
-                        restaurantData={restaurant} 
-                    />
-                ))}
+                {filteredRestaurants.length !== 0 ? (
+                    filteredRestaurants.map((restaurant) => (
+                        <RestaurantCard
+                            key={restaurant?.info?.id}
+                            {...restaurant?.info}
+                        />
+                    ))
+                ) : (
+                    <h2>Sorry we couldn't find any restaurant for "{restaurantName}"</h2>
+                )}
             </div>
         </div>
     );
