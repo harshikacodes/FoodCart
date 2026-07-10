@@ -1,18 +1,15 @@
 import {MdStarRate} from "react-icons/md";
 import { CDN_URL } from "../utils/constants";
 
-const RestaurantCard = (props) => {
-    const {restaurantData} = props;
-
-    const {
-        cloudinaryImageId,
-        name,
-        areaName,
-        avgRating,
-        cuisines,
-        costForTwo,
-        deliveryTime,
-    } = restaurantData?.info;
+const RestaurantCard = ({
+    cloudinaryImageId,
+    name,
+    areaName,
+    sla,
+    cuisines,
+    costForTwo,
+    avgRating
+}) => {
 
     return (
         <div className="restaurant-card">
@@ -35,7 +32,7 @@ const RestaurantCard = (props) => {
 
                     <h4>{costForTwo}</h4>
 
-                    <h4>{deliveryTime}</h4>
+                    <h4>{sla.deliveryTime}</h4>
                 </div>
 
                 <p className="cousine">
