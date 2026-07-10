@@ -18,8 +18,6 @@ const Body = () => {
             console.log(json);
 
             const restaurants = json?.data?.cards?.[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
-            console.log(restaurants);
-            console.log(Array.isArray(restaurants));
 
             setRestaurantList(restaurants);
             setFilteredRestaurants(restaurants);
