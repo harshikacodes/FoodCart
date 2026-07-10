@@ -9,6 +9,7 @@ import Body from "./components/Body.js";
 import Footer from "./components/Footer.js";
 import About from "./components/About.js";
 import Contact from "./components/Contact.js";
+import Error from "./components/Error.js";
 
 const App = () => {
     return (
@@ -25,6 +26,8 @@ const appRouter = createBrowserRouter([
     {
         path: "/",
         element: <App />,
+        
+        errorElement: <Error />,
 
         children: [
             {
